@@ -10,6 +10,12 @@ func main() {
 	file_ext := map[string]string{
 		".txt": "text file",
 		".pdf": "pdf",
+		".jpg": "image",
+		".png": "image",
+		".mp3": "audio",
+		".ppt": "powerpoint",
+		".mkv": "video",
+		".mp4": "video",
 	}
 
 	files, err := os.Open(".")
@@ -32,12 +38,11 @@ func main() {
 
 			if des, ok := file_ext[ext]; ok {
 				os.Mkdir(des, 0755)
-                
 
-                fname := f.Name()
-                newpath := filepath.Join(des,filepath.Base(fname))
+				fname := f.Name()
+				newpath := filepath.Join(des, filepath.Base(fname))
 
-                os.Rename(fname,newpath)
+				os.Rename(fname, newpath)
 			}
 
 		}
